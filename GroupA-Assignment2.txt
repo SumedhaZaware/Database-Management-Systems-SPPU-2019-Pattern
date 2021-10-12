@@ -1,0 +1,125 @@
+-- Name: Sumedha Zaware
+--Assignment-2
+
+-- Create Account table
+mysql> create table Account(Acc_no int, branch_name varchar(10), balance int);
+Query OK, 0 rows affected (1.74 sec)
+
+-- Insert values into Account table
+mysql> insert into Account(Acc_no, branch_name,balance)
+    -> values(101,'Wakad',90000),
+    -> (102,'Akurdi',60000),
+    -> (103,'Nigdi',50000),
+    -> (104,'Ravet',70000),
+    -> (105,'Pimpri',80000);
+Query OK, 5 rows affected (0.30 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+Select * from Account
++--------+-------------+---------+
+| Acc_no | branch_name | balance |
++--------+-------------+---------+
+|    101 | Wakad       |   90000 |
+|    102 | Akurdi      |   60000 |
+|    103 | Nigdi       |   50000 |
+|    104 | Ravet       |   70000 |
+|    105 | Pimpri      |   80000 |
++--------+-------------+---------+
+5 rows in set (0.04 sec)
+
+-- Create Branch table
+mysql> create table Branch(
+    ->     branch_name varchar(10),
+    ->     branch_city varchar(10),
+    ->     assets int
+    -> );
+Query OK, 0 rows affected (0.83 sec)
+
+-- Insert values into Branch table
+mysql> insert into Branch(branch_name,branch_city,assets)
+    -> values('Wakad','Pune',10000000),
+    -> ('Akurdi','Pune',20000000),
+    -> ('Nigdi','Pune',30000000),
+    -> ('Ravet','Pune',40000000),
+    -> ('Pimpri','Pune  ',1000000);
+Query OK, 5 rows affected (0.30 sec)
+Records: 5  Duplicates: 0  Warnings: 0 
+
+SELECT * FROM Branch;
+
+-- Create Customertable
+create table Customer(
+    cust_name varchar(20),
+    cust_street varchar(20),
+    cust_city varchar(10) 
+);  
+
+-- Insert values into Customer table
+insert into Customer(cust_name,cust_street,cust_city)
+values('Alpha','Ravet','Pune'),
+('Charlie','Nigdi','Pune'),
+('Root','Nigdi','Pune'),
+('Kernel','Wakad','Pune'),
+('Kali','Akurdi','Pune');
+
+SELECT * FROM Customer;
+mysql> Select * from Branch;
++-------------+-------------+----------+
+| branch_name | branch_city | assets   |
++-------------+-------------+----------+
+| Wakad       | Pune        | 10000000 |
+| Akurdi      | Pune        | 20000000 |
+| Nigdi       | Pune        | 30000000 |
+| Ravet       | Pune        | 40000000 |
+| Pimpri      | Pune        |  1000000 |
++-------------+-------------+----------+
+5 rows in set (0.00 sec)
+
+-- Create Depositor table
+create table Depositor(
+    cust_name varchar(20),
+    acc_no int 
+);
+
+-- Insert values into Depositor table
+insert into Depositor(cust_name,acc_no)
+values('Alpha',101),
+('Charlie',102),
+('Root',103),
+('Kernel',104),
+('Kali',105);
+
+SELECT * FROM Depositor;
+
+-- Create Loan table
+create table Loan(
+    loan_no int, 
+    branch_name varchar(10), 
+    amount int 
+);
+
+-- Insert values into Loan table
+insert into Loan(loan_no,branch_name,amount)
+values(201,'Wakad',50000),
+(202,'Akurdi',40000),
+(203,'Nigdi',1400),
+(204,'Ravet ',60000),
+(205,'Pimpri',70000);
+
+SELECT * FROM Loan;
+
+-- Create Borrower table
+create table Borrower( 
+    cust_name varchar(20), 
+    loan_no int
+);
+
+-- Insert values into Borrower table
+insert into Borrower(cust_name,loan_no)
+values('Alpha',201),
+('Charlie',202),
+('Root',203),
+('Kernel',204),
+('Kali',205);
+
+SELECT * FROM Borrower;
