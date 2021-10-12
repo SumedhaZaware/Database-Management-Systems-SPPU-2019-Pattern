@@ -117,34 +117,60 @@ mysql> Select * from Depositor;
 5 rows in set (0.00 sec)
 
 -- Create Loan table
-create table Loan(
-    loan_no int, 
-    branch_name varchar(10), 
-    amount int 
-);
+mysql> create table Loan(
+    ->     loan_no int, 
+    ->     branch_name varchar(10), 
+    ->     amount int 
+    -> );
+Query OK, 0 rows affected (1.29 sec)
 
 -- Insert values into Loan table
-insert into Loan(loan_no,branch_name,amount)
-values(201,'Wakad',50000),
-(202,'Akurdi',40000),
-(203,'Nigdi',1400),
-(204,'Ravet ',60000),
-(205,'Pimpri',70000);
+mysql> insert into Loan(loan_no,branch_name,amount)
+    -> values(201,'Wakad',50000),
+    -> (202,'Akurdi',40000),
+    -> (203,'Nigdi',1400),
+    -> (204,'Ravet ',60000),
+    -> (205,'Pimpri',70000);
+Query OK, 5 rows affected (0.13 sec)
+Records: 5  Duplicates: 0  Warnings: 0
 
-SELECT * FROM Loan;
+mysql> Select * from Loan;
++---------+-------------+--------+
+| loan_no | branch_name | amount |
++---------+-------------+--------+
+|     201 | Wakad       |  50000 |
+|     202 | Akurdi      |  40000 |
+|     203 | Nigdi       |   1400 |
+|     204 | Ravet       |  60000 |
+|     205 | Pimpri      |  70000 |
++---------+-------------+--------+
+5 rows in set (0.00 sec)
 
 -- Create Borrower table
-create table Borrower( 
-    cust_name varchar(20), 
-    loan_no int
-);
+mysql> create table Borrower( 
+    ->     cust_name varchar(20), 
+    ->     loan_no int
+    -> );
+Query OK, 0 rows affected (0.59 sec)
 
 -- Insert values into Borrower table
-insert into Borrower(cust_name,loan_no)
-values('Alpha',201),
-('Charlie',202),
-('Root',203),
-('Kernel',204),
-('Kali',205);
+mysql> insert into Borrower(cust_name,loan_no)
+    -> values('Alpha',201),
+    -> ('Charlie',202),
+    -> ('Root',203),
+    -> ('Kernel',204),
+    -> ('Kali',205);
+Query OK, 5 rows affected (0.12 sec)
+Records: 5  Duplicates: 0  Warnings: 0
 
-SELECT * FROM Borrower;
+mysql> select * from Borrower;
++-----------+---------+
+| cust_name | loan_no |
++-----------+---------+
+| Alpha     |     201 |
+| Charlie   |     202 |
+| Root      |     203 |
+| Kernel    |     204 |
+| Kali      |     205 |
++-----------+---------+
+5 rows in set (0.00 sec)
