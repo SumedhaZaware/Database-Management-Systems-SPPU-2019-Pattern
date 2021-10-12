@@ -46,24 +46,6 @@ Query OK, 5 rows affected (0.30 sec)
 Records: 5  Duplicates: 0  Warnings: 0 
 
 SELECT * FROM Branch;
-
--- Create Customertable
-create table Customer(
-    cust_name varchar(20),
-    cust_street varchar(20),
-    cust_city varchar(10) 
-);  
-
--- Insert values into Customer table
-insert into Customer(cust_name,cust_street,cust_city)
-values('Alpha','Ravet','Pune'),
-('Charlie','Nigdi','Pune'),
-('Root','Nigdi','Pune'),
-('Kernel','Wakad','Pune'),
-('Kali','Akurdi','Pune');
-
-SELECT * FROM Customer;
-mysql> Select * from Branch;
 +-------------+-------------+----------+
 | branch_name | branch_city | assets   |
 +-------------+-------------+----------+
@@ -75,21 +57,64 @@ mysql> Select * from Branch;
 +-------------+-------------+----------+
 5 rows in set (0.00 sec)
 
+-- Create Customer table
+mysql> create table Customer(
+    ->     cust_name varchar(20),
+    ->     cust_street varchar(20),
+    ->     cust_city varchar(10) 
+    -> ); 
+Query OK, 0 rows affected (1.30 sec)
+
+-- Insert values into Customer table
+mysql> insert into Customer(cust_name,cust_street,cust_city)
+    -> values('Alpha','Ravet','Pune'),
+    -> ('Charlie','Nigdi','Pune'),
+    -> ('Root','Nigdi','Pune'),
+    -> ('Kernel','Wakad','Pune'),
+    -> ('Kali','Akurdi','Pune');
+Query OK, 5 rows affected (0.18 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> Select * from Customer;
++-----------+-------------+-----------+
+| cust_name | cust_street | cust_city |
++-----------+-------------+-----------+
+| Alpha     | Ravet       | Pune      |
+| Charlie   | Nigdi       | Pune      |
+| Root      | Nigdi       | Pune      |
+| Kernel    | Wakad       | Pune      |
+| Kali      | Akurdi      | Pune      |
++-----------+-------------+-----------+
+5 rows in set (0.00 sec)
+
 -- Create Depositor table
-create table Depositor(
-    cust_name varchar(20),
-    acc_no int 
-);
+mysql> create table Depositor(
+    ->     cust_name varchar(20),
+    ->     acc_no int 
+    -> );
+Query OK, 0 rows affected (1.74 sec)
 
 -- Insert values into Depositor table
-insert into Depositor(cust_name,acc_no)
-values('Alpha',101),
-('Charlie',102),
-('Root',103),
-('Kernel',104),
-('Kali',105);
+mysql> insert into Depositor(cust_name,acc_no)
+    -> values('Alpha',101),
+    -> ('Charlie',102),
+    -> ('Root',103),
+    -> ('Kernel',104),
+    -> ('Kali',105);
+Query OK, 5 rows affected (0.15 sec)
+Records: 5  Duplicates: 0  Warnings: 0
 
-SELECT * FROM Depositor;
+mysql> Select * from Depositor;
++-----------+--------+
+| cust_name | acc_no |
++-----------+--------+
+| Alpha     |    101 |
+| Charlie   |    102 |
+| Root      |    103 |
+| Kernel    |    104 |
+| Kali      |    105 |
++-----------+--------+
+5 rows in set (0.00 sec)
 
 -- Create Loan table
 create table Loan(
