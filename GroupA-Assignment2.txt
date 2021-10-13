@@ -174,3 +174,145 @@ mysql> select * from Borrower;
 | Kali      |     205 |
 +-----------+---------+
 5 rows in set (0.00 sec)
+
+-- These are the required tables, now we will perform actual operations on these tables and observe the changes
+-- These questions were given by our faculty and these may differ in your case
+
+--1 
+mysql> select branch_name from Loan;
++-------------+
+| branch_name |
++-------------+
+| Wakad       |
+| Akurdi      |
+| Nigdi       |
+| Ravet       |
+| Pimpri      |
++-------------+
+5 rows in set (0.00 sec)
+
+--2
+mysql> select loan_no from Loan where branch_name="Akurdi" and amount>12000;
++---------+
+| loan_no |
++---------+
+|     202 |
++---------+
+1 row in set (0.00 sec)
+
+--3
+mysql> select Borrower.loan_no, cust_name,amount from Borrower, Loan 
+    -> where Borrower.loan_no=Loan.loan_no;
++---------+-----------+--------+
+| loan_no | cust_name | amount |
++---------+-----------+--------+
+|     201 | Alpha     |  50000 |
+|     202 | Charlie   |  40000 |
+|     203 | Root      |   1400 |
+|     204 | Kernel    |  60000 |
+|     205 | Kali      |  70000 |
++---------+-----------+--------+
+5 rows in set (0.00 sec)
+
+--4
+mysql> select distinct cust_name from Borrower, Loan
+    -> where Borrower.loan_no = Loan.loan_no and branch_name="Akurdi"
+    -> order by cust_name;
++-----------+
+| cust_name |
++-----------+
+| Charlie   |
++-----------+
+1 row in set (0.10 sec)
+
+--5
+mysql> (select cust_name from Depositor) union (select cust_name from Borrower); 
++-----------+
+| cust_name |
++-----------+
+| Alpha     |
+| Charlie   |
+| Root      |
+| Kernel    |
+| Kali      |
++-----------+
+5 rows in set (0.05 sec)
+
+--6
+mysql> select distinct cust_name from Borrower
+    -> where cust_name in (select cust_name from Depositor);
++-----------+
+| cust_name |
++-----------+
+| Alpha     |
+| Charlie   |
+| Root      |
+| Kernel    |
+| Kali      |
++-----------+
+5 rows in set (0.02 sec)
+
+
+--7
+mysql> select cust_name from Depositor
+    -> where cust_name not in (select cust_name from Borrower);
+Empty set (0.06 sec)
+
+
+--8
+mysql> select avg(balance) from Account where branch_name="Akurdi";
++--------------+
+| avg(balance) |
++--------------+
+|   60000.0000 |
++--------------+
+1 row in set (0.06 sec)
+
+--9
+mysql> select branch_name, avg(balance) from Account group by branch_name;
++-------------+--------------+
+| branch_name | avg(balance) |
++-------------+--------------+
+| Wakad       |   90000.0000 |
+| Akurdi      |   60000.0000 |
+| Nigdi       |   50000.0000 |
+| Ravet       |   70000.0000 |
+| Pimpri      |   80000.0000 |
++-------------+--------------+
+5 rows in set (0.04 sec)
+
+--10
+mysql> select branch_name, avg (balance) from Account group by branch_name having avg(balance)>12000;
++-------------+---------------+
+| branch_name | avg (balance) |
++-------------+---------------+
+| Wakad       |    90000.0000 |
+| Akurdi      |    60000.0000 |
+| Nigdi       |    50000.0000 |
+| Ravet       |    70000.0000 |
+| Pimpri      |    80000.0000 |
++-------------+---------------+
+5 rows in set (0.04 sec)
+
+--11
+mysql> select sum(amount) from Loan;
++-------------+
+| sum(amount) |
++-------------+
+|      221400 |
++-------------+
+1 row in set (0.00 sec)
+
+--12
+mysql> delete from Loan where amount between 1300 and 1500;
+Query OK, 1 row affected (0.25 sec)
+mysql> select * from Loan;
++---------+-------------+--------+
+| loan_no | branch_name | amount |
++---------+-------------+--------+
+|     201 | Wakad       |  50000 |
+|     202 | Akurdi      |  40000 |
+|     204 | Ravet       |  60000 |
+|     205 | Pimpri      |  70000 |
++---------+-------------+--------+
+4 rows in set (0.00 sec)
