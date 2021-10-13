@@ -1,6 +1,9 @@
 # Database-Management-Systems-SPPU-2019-Pattern
 
 This repository contains the assignments💻 of Database Management Systems provided by Savitribai Phule Pune University(SPPU)🎓
+
+
+
 **NOTE:**
     I have used ubuntu 20.04.3 LTS for these practicals.
 
