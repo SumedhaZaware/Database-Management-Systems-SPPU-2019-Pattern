@@ -13,3 +13,9 @@ This repository contains the assignments💻 of Database Management Systems prov
        Synonym, different constraints etc.
        
     b. Write at least 10 SQL queries on the suitable database application using SQL DML statements.
+
+3. **Assignment-3**
+
+    Write at least 10 SQL queries for suitable database application using SQL DML statements.
+    Note: Instructor will design the queries which demonstrate the use of concepts like all types of
+    Join ,Sub-Query and View.
