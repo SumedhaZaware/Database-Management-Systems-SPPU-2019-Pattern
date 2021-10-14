@@ -1,1 +1,160 @@
+-- Create table cust_mstr
+mysql> Create table cust_mstr(cust_no int not null primary key,fname
+    -> varchar(10),lname varchar(10));
+Query OK, 0 rows affected (1.49 sec)
 
+mysql> insert into cust_mstr values(1,'xyz','abc');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into cust_mstr values(2,'xyz','pqr');
+Query OK, 1 row affected (0.26 sec)
+
+mysql> insert into cust_mstr values(3,'abc','qbc');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into cust_mstr values(4,'cdf','tak');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into cust_mstr values(5,'wrt','sid');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from cust_mstr;
++---------+-------+-------+
+| cust_no | fname | lname |
++---------+-------+-------+
+|       1 | xyz   | abc   |
+|       2 | xyz   | pqr   |
+|       3 | abc   | qbc   |
+|       4 | cdf   | tak   |
+|       5 | wrt   | sid   |
++---------+-------+-------+
+5 rows in set (0.00 sec)
+
+-- Create table 
+mysql> Create table add_dets(add1 varchar(10), add2 varchar(10),state varchar(10), city varchar(10),pincod int);
+Query OK, 0 rows affected (1.69 sec)
+mysql> insert into add_dets values('smp', 'smp', 'smp', 'smp',123025);
+Query OK, 1 row affected (0.08 sec)
+mysql> insert into add_dets values('masp', 'masp', 'masp', 'masp',412123);
+Query OK, 1 row affected (0.20 sec)
+mysql> insert into add_dets values('cvbmp', 'mcvbp', 'mpcvb','cvbmp',516123);
+Query OK, 1 row affected (0.39 sec)
+mysql> insert into add_dets values('1mp', '23mp', 'mp', 'mp',412123);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from add_dets;
++-------+-------+-------+-------+--------+
+| add1  | add2  | state | city  | pincod |
++-------+-------+-------+-------+--------+
+| smp   | smp   | smp   | smp   | 123025 |
+| masp  | masp  | masp  | masp  | 412123 |
+| cvbmp | mcvbp | mpcvb | cvbmp | 516123 |
+| 1mp   | 23mp  | mp    | mp    | 412123 |
++-------+-------+-------+-------+--------+
+4 rows in set (0.00 sec)
+
+create table fd_dets(fd_sr int not null primary key, amt int);
+create table acc_fd_cust_dets(cust_no int ,acc_fd_no int);
+
+insert into fd_dets values(101,56000);
+insert into fd_dets values(201,6000);
+insert into fd_dets values(301,1000);
+insert into fd_dets values(401,2000);
+insert into acc_fd_cust_dets values(1,101);
+insert into acc_fd_cust_dets values(2,201);
+insert into acc_fd_cust_dets values(3,301);
+insert into acc_fd_cust_dets values(4,401);
+
+select
+cust_mstr.cust_no,cust_mstr.fname,cust_mstr.lname,fd_dets.amt from
+cust_mstr inner join acc_fd_cust_dets on
+cust_mstr.cust_no=acc_fd_cust_dets.cust_no inner join fd_dets on
+fd_dets.fd_sr = acc_fd_cust_dets.acc_fd_no where fd_dets.amt>5000;
+
+--Query 3
+
+Create table emp_mstr(emp_no int not null primary key, f_name
+varchar(10),l_name varchar(10), m_name varchar(10), dept
+varchar(10),desg varchar(10),branch_no int);
+Create table branch_mstr(name varchar(10), b_no int);
+
+INSERT INTO emp_mstr VALUES (011, 'Shlok', 'Joshi', 'Ajay',
+'Loan', 'RM', 111), (012, 'Pratik', 'Dixit', 'Sanjay', 'Funds', 'RM',
+112);
+INSERT INTO branch_mstr(name, b_no) VALUES('Ganesh Co',
+111),('Mahabal', 112);
+
+select * from emp_mstr inner join branch_mstr where
+emp_mstr.branch_no = branch_mstr.b_no;
+ 
+
+-- query 4
+
+Alter table emp_mstr drop column desg;
+Alter table emp_mstr drop column branch_no;
+create table Cntc_dets(code_no int, cntc_type varchar(15),cntc_data
+varchar(15));
+
+INSERT INTO emp_mstr(emp_no, f_name, l_name, m_name,
+dept) VALUES (013, 'Jayesh', 'Chaudhari', 'Suraj', 'cust_ser');
+INSERT INTO cntc_dets(code_no, cntc_type, cntc_data) VALUES
+(011, 'mob. no', '7584523968'),(012, 'mob. no.', '1235683320');
+
+ select * from emp_mstr left join cntc_dets ON
+emp_mstr.emp_no = cntc_dets.code_no;
+
+ select * from emp_mstr right join cntc_dets ON
+emp_mstr.emp_no = cntc_dets.code_no;
+
+-- query 5
+
+Alter table add_dets drop column add1, drop column add2, drop column
+state, drop column city;
+
+alter table branch_mstr add column pincode varchar(255);
+update branch_mstr set pincode = 123025 where b_no = 111;
+update branch_mstr set pincode = 412123 where b_no = 112;
+
+select * from cust_mstr where cust_no not in (select
+cust_mstr.cust_no from cust_mstr inner join add_dets on
+add_dets.cust_no = cust_mstr.cust_no inner join branch_mstr on
+add_dets.pincode = branch_mstr.pincode);
+
+-- query 6 a
+
+CREATE TABLE depsitor(acc_no INT, cust_name VARCHAR(20), cust_street
+VARCHAR(20), cust_city VARCHAR(10) );
+INSERT INTO depsitor(acc_no, cust_name, cust_street, cust_city) VALUES (2001,
+'Akash', 'M.G road', 'Nahsik'), (2002, 'Mohit', 'Shivaji road', 'Nashik'), (2003, 'Paresh',
+'J.P road', 'Dharangaon');
+CREATE TABLE borrrower( acc_no INT, cust_name VARCHAR(20), loan_no INT,
+amount INT );
+INSERT INTO borrrower(acc_no, cust_name, loan_no, amount) VALUES (2001,
+'Akshay', 3001, 500000), (2002, 'Mohit', 3002, 250000), (2003, 'Paresh', 3003, 784512);
+
+create view vborr as select acc_no,cust_name from borrrower;
+select * from vborr;
+
+insert into vborr values (2004,'Siddhi'),(2005,'Sanjana');
+delete from vborr where acc_no = 2005;
+update vborr set cust_name = 'Pratham' where acc_no = 2002;
+select * from vborr;
+
+-- query 6 b
+ create view vbd as select
+depsitor.cust_name,borrrower.loan_no from depsitor,borrrower where
+depsitor.acc_no=borrrower.acc_no;
+
+-- query 6 c
+CREATE VIEW viewborrrow AS SELECT acc_no, cust_name FROM borrrower;
+SELECT * FROM viewborrrow;
+
+INSERT INTO viewborrrow(acc_no, cust_name) VALUES (2007, 'Umesh'), (2008,
+'Saurabh');
+DELETE FROM viewborrrow WHERE acc_no=2002;
+UPDATE viewborrrow SET cust_name='Sumit' WHERE acc_no=2003;
+ SELECT * FROM viewborrrow;
+
+DROP VIEW `acme`.`vborr`;
+DROP VIEW `acme`.`vbd`;
+DROP TABLE `acme`.`acc_fd_cust_dets`, `acme`.`add_dets`, `acme`.`borrrower`, `acme`.`branch_mstr`, `acme`.`cntc_dets`, `acme`.`cust_mstr`, `acme`.`depsitor`, `acme`.`emp_mstr`, `acme`.`fd_dets`;
