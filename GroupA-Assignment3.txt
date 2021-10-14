@@ -58,12 +58,12 @@ mysql> select * from add_dets;
 
 -- query 1
 create table fd_dets(fd_sr int not null primary key, amt int);
-create table acc_fd_cust_dets(cust_no int ,acc_fd_no int);
-
 insert into fd_dets values(101,56000);
 insert into fd_dets values(201,6000);
 insert into fd_dets values(301,1000);
 insert into fd_dets values(401,2000);
+
+create table acc_fd_cust_dets(cust_no int ,acc_fd_no int);
 insert into acc_fd_cust_dets values(1,101);
 insert into acc_fd_cust_dets values(2,201);
 insert into acc_fd_cust_dets values(3,301);
@@ -75,8 +75,7 @@ cust_mstr inner join acc_fd_cust_dets on
 cust_mstr.cust_no=acc_fd_cust_dets.cust_no inner join fd_dets on
 fd_dets.fd_sr = acc_fd_cust_dets.acc_fd_no where fd_dets.amt>5000;
 
---Query 3
-
+--query 3
 Create table emp_mstr(emp_no int not null primary key, f_name
 varchar(10),l_name varchar(10), m_name varchar(10), dept
 varchar(10),desg varchar(10),branch_no int);
@@ -135,27 +134,33 @@ Insert borrrower(acc_no, cust_name, loan_no, amount)
 
 create view vborr as select acc_no,cust_name from borrrower;
 select * from vborr;
-
-insert into vborr values (2004,'Siddhi'),(2005,'Sanjana');
+insert into vborr 
+    values (2004,'Siddhi'),
+    (2005,'Sanjana');
 delete from vborr where acc_no = 2005;
 update vborr set cust_name = 'Pratham' where acc_no = 2002;
 select * from vborr;
 
--- query 6 b
- create view vbd as select
+-- query 6(b)
+create view vbd as select
 depsitor.cust_name,borrrower.loan_no from depsitor,borrrower where
 depsitor.acc_no=borrrower.acc_no;
 
--- query 6 c
-CREATE VIEW viewborrrow AS SELECT acc_no, cust_name FROM borrrower;
-SELECT * FROM viewborrrow;
+-- query 6(c)
+Create view viewborrrow AS SELECT acc_no, cust_name from borrrower;
+select * from viewborrrow;
 
-INSERT INTO viewborrrow(acc_no, cust_name) VALUES (2007, 'Umesh'), (2008,
-'Saurabh');
-DELETE FROM viewborrrow WHERE acc_no=2002;
-UPDATE viewborrrow SET cust_name='Sumit' WHERE acc_no=2003;
- SELECT * FROM viewborrrow;
+Insert into viewborrrow(acc_no, cust_name) 
+    values (2007, 'Umesh'), 
+    (2008,'Saurabh');
+Delete from viewborrrow where acc_no=2002;
+update viewborrrow set cust_name='Sumit' where acc_no=2003;
+Select * from viewborrrow;
 
-DROP VIEW `acme`.`vborr`;
-DROP VIEW `acme`.`vbd`;
-DROP TABLE `acme`.`acc_fd_cust_dets`, `acme`.`add_dets`, `acme`.`borrrower`, `acme`.`branch_mstr`, `acme`.`cntc_dets`, `acme`.`cust_mstr`, `acme`.`depsitor`, `acme`.`emp_mstr`, `acme`.`fd_dets`;
+drop view `acme`.`vborr`;
+drop view `acme`.`vbd`;
+drop table `acme`.`acc_fd_cust_dets`, `acme`.`add_dets`, 
+    `acme`.`borrrower`, `acme`.`branch_mstr`, 
+    `acme`.`cntc_dets`, `acme`.`cust_mstr`,
+    `acme`.`depsitor`, `acme`.`emp_mstr`, 
+    `acme`.`fd_dets`;
