@@ -1,3 +1,6 @@
+--NAME: Sumedha Nitin Zaware
+-- ASSIGNMENT-3
+
 -- Create table cust_mstr
 mysql> Create table cust_mstr(cust_no int not null primary key,fname
     -> varchar(10),lname varchar(10));
@@ -53,6 +56,7 @@ mysql> select * from add_dets;
 +-------+-------+-------+-------+--------+
 4 rows in set (0.00 sec)
 
+-- query 1
 create table fd_dets(fd_sr int not null primary key, amt int);
 create table acc_fd_cust_dets(cust_no int ,acc_fd_no int);
 
@@ -65,8 +69,8 @@ insert into acc_fd_cust_dets values(2,201);
 insert into acc_fd_cust_dets values(3,301);
 insert into acc_fd_cust_dets values(4,401);
 
-select
-cust_mstr.cust_no,cust_mstr.fname,cust_mstr.lname,fd_dets.amt from
+--query 2
+select cust_mstr.cust_no,cust_mstr.fname,cust_mstr.lname,fd_dets.amt from
 cust_mstr inner join acc_fd_cust_dets on
 cust_mstr.cust_no=acc_fd_cust_dets.cust_no inner join fd_dets on
 fd_dets.fd_sr = acc_fd_cust_dets.acc_fd_no where fd_dets.amt>5000;
@@ -78,36 +82,33 @@ varchar(10),l_name varchar(10), m_name varchar(10), dept
 varchar(10),desg varchar(10),branch_no int);
 Create table branch_mstr(name varchar(10), b_no int);
 
-INSERT INTO emp_mstr VALUES (011, 'Shlok', 'Joshi', 'Ajay',
-'Loan', 'RM', 111), (012, 'Pratik', 'Dixit', 'Sanjay', 'Funds', 'RM',
-112);
-INSERT INTO branch_mstr(name, b_no) VALUES('Ganesh Co',
-111),('Mahabal', 112);
+Insert into emp_mstr values (011, 'Shlok', 'Joshi', 'Ajay','Loan', 'RM', 111), 
+(012, 'Pratik', 'Dixit', 'Sanjay', 'Funds', 'RM', 112);
+Insert into branch_mstr(name, b_no) values('Ganesh Co',111),
+('Mahabal', 112);
 
 select * from emp_mstr inner join branch_mstr where
 emp_mstr.branch_no = branch_mstr.b_no;
  
-
 -- query 4
-
 Alter table emp_mstr drop column desg;
 Alter table emp_mstr drop column branch_no;
 create table Cntc_dets(code_no int, cntc_type varchar(15),cntc_data
 varchar(15));
 
-INSERT INTO emp_mstr(emp_no, f_name, l_name, m_name,
-dept) VALUES (013, 'Jayesh', 'Chaudhari', 'Suraj', 'cust_ser');
-INSERT INTO cntc_dets(code_no, cntc_type, cntc_data) VALUES
-(011, 'mob. no', '7584523968'),(012, 'mob. no.', '1235683320');
+Insert into emp_mstr(emp_no, f_name, l_name, m_name,dept) 
+values (013, 'Jayesh', 'Chaudhari', 'Suraj', 'cust_ser');
 
- select * from emp_mstr left join cntc_dets ON
+Insert into cntc_dets(code_no, cntc_type, cntc_data)
+values (011, 'mob. no', '7584523968'),(012, 'mob. no.', '1235683320');
+
+select * from emp_mstr left join cntc_dets on
 emp_mstr.emp_no = cntc_dets.code_no;
 
- select * from emp_mstr right join cntc_dets ON
+select * from emp_mstr right join cntc_dets on
 emp_mstr.emp_no = cntc_dets.code_no;
 
 -- query 5
-
 Alter table add_dets drop column add1, drop column add2, drop column
 state, drop column city;
 
@@ -120,17 +121,17 @@ cust_mstr.cust_no from cust_mstr inner join add_dets on
 add_dets.cust_no = cust_mstr.cust_no inner join branch_mstr on
 add_dets.pincode = branch_mstr.pincode);
 
--- query 6 a
-
-CREATE TABLE depsitor(acc_no INT, cust_name VARCHAR(20), cust_street
-VARCHAR(20), cust_city VARCHAR(10) );
-INSERT INTO depsitor(acc_no, cust_name, cust_street, cust_city) VALUES (2001,
-'Akash', 'M.G road', 'Nahsik'), (2002, 'Mohit', 'Shivaji road', 'Nashik'), (2003, 'Paresh',
-'J.P road', 'Dharangaon');
-CREATE TABLE borrrower( acc_no INT, cust_name VARCHAR(20), loan_no INT,
-amount INT );
-INSERT INTO borrrower(acc_no, cust_name, loan_no, amount) VALUES (2001,
-'Akshay', 3001, 500000), (2002, 'Mohit', 3002, 250000), (2003, 'Paresh', 3003, 784512);
+-- query 6(a)
+Create table depsitor(acc_no INT, cust_name varchar(20), cust_street varchar(20), cust_city varchar(10));
+Insert into depsitor(acc_no, cust_name, cust_street, cust_city) 
+    values (2001,'Akash', 'M.G road', 'Nahsik'), 
+    (2002, 'Mohit', 'Shivaji road', 'Nashik'), 
+    (2003, 'Paresh','J.P road', 'Dharangaon');
+Create table borrrower( acc_no int, cust_name varchar(20), loan_no int, amount int);
+Insert borrrower(acc_no, cust_name, loan_no, amount) 
+    values (2001,'Akshay', 3001, 500000), 
+    (2002, 'Mohit', 3002, 250000), 
+    (2003, 'Paresh', 3003, 784512);
 
 create view vborr as select acc_no,cust_name from borrrower;
 select * from vborr;
