@@ -1,3 +1,5 @@
+-- NAME:Sumedha Nitin Zaware
+-- ASSIGNMENT-4
 
 -- create table stud
 mysql> create table stud(roll int,att int,status varchar(10));
@@ -44,5 +46,120 @@ Exception
 
 when no_data_found then 
 dbms_output.put_line(mroll||'Not found');
+
+End;
+
+--b
+create table account_master1( acc_id int,balance int);
+insert into account_master1 values(201,5000); 
+insert into account_master1 values(202,7000); 
+select * from account_master1;
+
+set serveroutput on;
+Declare 
+        balance int; 
+        withdraw int; 
+        deposit int; 
+        choice int;
+        not_sufficient exception;
+Begin
+        dbms_output.put_line('do you want to withdraw or deposit? 1 for withdraw any other number for deposit');
+        choice:=&choice;
+        select balance into balance from account_master1 where acc_id = 201; 
+        
+        if choice = 1 
+        then 
+        withdraw := &withdraw;
+        if balance < withdraw 
+        then 
+        raise not_sufficient;
+        
+        else
+        balance := balance - withdraw;
+        update account_master1 
+        set account_master1.balance = balance where acc_id = 201;
+        
+        end if;
+        else deposit :=&deposit; 
+        balance := balance + deposit;
+        update account_master1 
+        set account_master1.balance = balance where acc_id = 201; end if;
+        
+Exception
+        When not_sufficient 
+        then dbms_output.put_line(' Balance is not sufficient');
+End;
+
+--c
+create table client_master (c_id int,bal_due int); 
+insert into client_master values(301,5000); 
+insert into client_master values(302,-100); 
+insert into client_master values(303,7500); 
+select * from client_master;
+
+Declare 
+        Records int; 
+        Id int;
+        Bal int;
+        bussiness_rule_violation exception; 
+Begin
+        Select count(*) into records from client_master; 
+        For id in 1..records
+        Loop
+        Select bal_due into bal from client_master2 
+        where c_id = Id; 
+
+if bal<0 
+        then Raise bussiness_rule_violation; 
+
+End if;
+End Loop; 
+
+Exception
+        When bussiness_rule_violation 
+        then dbms_output.put_line(' Bussiness Rule is Violated'); 
+
+End;
+
+--d
+create table Borrower1(roll_no int,name varchar(30),issue_day int, book_name varchar(30),status varchar(20));
+insert into Borrower1(roll_no,name,issue_day,book_name) values(401,’mnq','10','Golden Stars');
+insert into Borrower1(roll_no,name,issue_day,book_name) values(402,'pqr','15',’Atomic Habit ');
+select * from Borrower1;
+
+create table Fine1(Roll_no int,days int,amt int); insert into Fine1 values(401,29,350);
+insert into Fine1 values(402,40,500); 
+select * from Fine1;
+
+Declare 
+        Roll int;
+        name Borrower1.name%type; 
+        Issue Borrower1.issue_day%type; 
+        today int;
+        days int; 
+        fine int;
+        not_possible exception;
+        Begin name:=&name; Roll:=&roll; Today:=&today; If today<0 then
+        Raise not_possible;
+
+End if;
+        select issue_day into issue from borrower1 where roll_no = roll; days := today-issue;
+        If days<0 then Raise not_possible; 
+
+End if;
+        fine:=0;
+        if days<15 then
+        fine:=0;
+        goto no_fine;
+        elsif days<30 and days>15 then fine := days*5;
+
+else
+        fine:=(30*5) + ((days-30)*50); 
+        end if;
+        insert into fine values(roll,days,fine);
+        <<no_fine>>
+        update Borrower1 set status = ' R' 
+        where roll_no = roll; Exception
+        When not_possible then dbms_output.put_line(' Days can not be negative'); 
 
 End;
