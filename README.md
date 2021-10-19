@@ -41,15 +41,34 @@ This repository contains the assignments💻 of Database Management Systems prov
     specifies when the value of bal_due field is less than 0 handle the exception.
     
     d. Consider below database schema: 
-            **Borrower(Roll_no, Name, DateofIssue, NameofBook, Status) Fine(Roll_no,Date,Amt)**
+    
+    **Borrower(Roll_no, Name, DateofIssue, NameofBook, Status) Fine(Roll_no,Date,Amt)**
        
-        * Accept roll_no & name of book from user.
-        
-        * Check the number of days (from date of issue), if days are between 15 to 30 then fine amount will be Rs 5per day.
-        
-        * If no. of days>30, per day fine will be Rs 50 per day & for days less than 30, Rs. 5 per day.
-        
-        * If condition of fine is true, then details will be stored into fine table. Also handles the exception by named exception 
+       
+        - Accept roll_no & name of book from user.
+        - Check the number of days (from date of issue), if days are between 15 to 30 then fine amount will be Rs 5per day.
+        - If no. of days>30, per day fine will be Rs 50 per day & for days less than 30, Rs. 5 per day.
+        - If condition of fine is true, then details will be stored into fine table. Also handles the exception by named exception 
           handler or user define exception handler.
-         
-        * After submitting the book, status will change from I to R.
+        - After submitting the book, status will change from I to R.
+
+5. **Assignment-5**
+    
+    a. Write a PL/SQL stored procedure for the following requirements and call the procedure in the appropriate PL/SQL block.
+                   
+                   
+      **Borrower(Rollin, Name, DateofIssue, NameofBook, Status)**
+                    
+      **Fine(Roll_no,Date,Amt)**
+    
+    b. Write a stored function in PL/SQL for a given requirement and use the same in PL/SQL block.
+        
+       - Account no. and branch name will be accepted by the user. The same will be searched in table acct_details. 
+       - If the status of the account is active then display an appropriate message and also store the account details 
+         in the active_acc_details table, otherwise display a message on the screen “account is inactive”.
+    
+    c. Write a Stored Procedure namely proc_Grade for the categorization of students.
+       - If marks scored by students in examination is <=1500 and marks>=990 then the student will be placed in the distinction category.
+       - If marks scored are between 989 and900 categories is first-class
+       - If marks 899 and 825 categories are Higher Second Class.
+
