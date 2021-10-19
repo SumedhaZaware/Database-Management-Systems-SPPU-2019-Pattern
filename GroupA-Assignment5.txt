@@ -1,0 +1,46 @@
+-- NAME: Sumedha Nitin Zaware
+-- ASSIGNMENT-5
+
+--a
+--Table creation
+create table Borrower(Roll_no number(5), Name varchar(30), DateofIssue date, NameofBook varchar(30), Status varchar(5));
+create table Fine(Roll_no number(5),Fdate date,Amt number(8));
+
+insert into Borrower values(1,'Jayraj',DATE '2020-08-14','MySQL','I');
+insert into Borrower values(2,'Aditya',DATE '2021-07-28','DBMS','I');
+insert into Borrower values(3,'Sameet',DATE '2021-06-24','Networking','I');
+
+--Procedure:
+CREATE OR REPLACE PROCEDURE fine_calc(rollno number,bookname varchar) 
+IS 
+i_date date; 
+cdate date; 
+diff int(10); 
+famt number(10); 
+
+BEGIN 
+Select DateofIssue into i_date from Borrower where Roll_no=rollno; 
+Select SYSDATE into cdate from dual; 
+diff:=cdate - i_date; 
+If diff<30 and diff>15 then 
+famt:=diff*5; 
+insert into Fine values(rollno,cdate,famt); 
+elsif diff>30 then 
+famt:=diff*50; 
+insert into Fine values(rollno,cdate,famt);
+else 
+dbms_output.put_line('No fine'); 
+End if; 
+
+update Borrower set status='R' where Roll_no=rollno; 
+END fine_calc;
+
+-- PL/SQL block:
+DECLARE
+rollno number(5); bookname varchar(30);
+
+BEGIN
+rollno:=3; bookname:=’Networking’; fine_calc(rollno,bookname);
+END;
+
+--b
