@@ -44,3 +44,40 @@ rollno:=3; bookname:=’Networking’; fine_calc(rollno,bookname);
 END;
 
 --b
+--Table creation
+create table acct_details(accno number(10),brname varchar(20),status varchar(10));
+create table active_acc_details(accno number(10),brname varchar(20)); 
+
+insert into acct_details values(1001,'Pune','active'); 
+insert into acct_details values(1002,'Manchar','inactive'); 
+insert into acct_details values(1003,'Nashik','active'); 
+insert into acct_details values(1004,'Gujrat','inactive');
+
+--Procedure:
+CREATE OR REPLACE FUNCTION active_acc(acno number,br_name varchar) 
+RETURN varchar 
+IS 
+sts varchar(10); 
+
+BEGIN 
+select status into sts from acct_details where accno=acno and brname=br_name; 
+if sts='active' then 
+insert into active_acc_details values(acno,br_name); 
+else 
+return 'account is inactive'; 
+end if; 
+
+END 
+active_acc;
+
+-- PL/SQL block:
+DECLARE brname varchar(30); 
+acno number(10); 
+msg varchar(20); 
+
+BEGIN 
+brname:='Gujrat'; 
+acno:=1004; 
+msg:=active_acc(acno,brname); 
+dbms_output.put_line(msg); 
+END;
