@@ -81,3 +81,42 @@ acno:=1004;
 msg:=active_acc(acno,brname); 
 dbms_output.put_line(msg); 
 END;
+
+--c
+-- Table Creation
+create table Stud_Marks(name varchar(20), total_marks number(10));
+create table Result(Roll number(5),Name varchar(20), Class varchar(20)); 
+
+insert into Stud_Marks values('Jayraj',1500); 
+insert into Stud_Marks values('Aditya',1100); 
+insert into Stud_Marks values('Sameet',800);
+
+-- Procedure:
+CREATE OR REPLACE PROCEDURE proc_grade(vname varchar,vroll number)
+IS
+grade varchar(20);
+vmarks number(10);
+
+BEGIN
+select total_marks into vmarks from Stud_Marks where name=vname;
+if vmarks<=1500 and vmarks>=990 then
+grade:='distinction';
+elsif vmarks<=989 and vmarks>=900 then grade:='first class';
+elsif vmarks<=899 and vmarks>=825 then
+grade:='Higher Second Class';
+end if;
+insert into Result values(vroll,vname,grade);
+
+END proc_grade;
+
+-- PL/SQL block:
+DECLARE
+vname varchar(20);
+vroll number(10);
+
+BEGIN
+vname:='Jayraj';
+vroll:=77;
+proc_grade(vname,vroll); 
+
+END;
