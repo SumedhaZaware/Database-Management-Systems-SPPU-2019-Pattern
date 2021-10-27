@@ -72,8 +72,27 @@ This repository contains the assignments💻 of Database Management Systems prov
        - If marks scored are between 989 and900 categories is first-class
        - If marks 899 and 825 categories are Higher Second Class.
 
-6.**Assignment-6**
+6. **Assignment-6**
 
-a. The bank manager has decided to activate all those accounts which were previously marked as inactive for 
-    performing no transaction in the last 365 days. Write a PL/SQL block (using the implicit cursor) to update 
-    the status of the account, display an approximate message based on the no. of rows affected by the update.Use of %FOUND, %NOTFOUND, %ROWCOUNT.
+    a. The bank manager has decided to activate all those accounts which were previously marked as inactive for 
+        performing no transaction in the last 365 days. Write a PL/SQL block (using the implicit cursor) to update 
+        the status of the account, display an approximate message based on the no. of rows affected by the update.
+        Use of %FOUND, %NOTFOUND, %ROWCOUNT.
+        
+    b. The organization has decided to increase the salary of employees by 10% of existing salary, who are having salaries 
+       less than the average salary of the organization. Whenever such salary updates take place, a record for the same is 
+       maintained in the increment_salary table.
+       
+       **EMP (E_no , Salary) increment_salary(E_no , Salary)**
+       
+    c. Write PL/SQL block using explicit cursor for following requirements: College has decided to mark all those students 
+       detained (D) who are having attendance less than 75%. Whenever such an update takes place, a record for the same is 
+       maintained in the D_Stud table.
+       
+    d. Write a PL/SQL block of code using parameterized Cursor that will merge the data available in the newly created table 
+       N_RollCall with the data available in the table O_RollCall. If the data in the first table already exists in the second 
+       table then that data should be skipped. 
+    
+    e. Write the PL/SQL block for following requirements using parameterized Cursor: 
+       Consider table EMP(e_no, d_no, Salary), department wise average salary should be inserted into the new table 
+       dept_salary(d_no, Avg_salary).
