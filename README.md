@@ -83,7 +83,7 @@ This repository contains the assignments💻 of Database Management Systems prov
        less than the average salary of the organization. Whenever such salary updates take place, a record for the same is 
        maintained in the increment_salary table.
        
-       **EMP (E_no , Salary) increment_salary(E_no , Salary)**
+      **EMP (E_no , Salary) increment_salary(E_no , Salary)**
        
     c. Write PL/SQL block using explicit cursor for following requirements: College has decided to mark all those students 
        detained (D) who are having attendance less than 75%. Whenever such an update takes place, a record for the same is 
@@ -96,3 +96,7 @@ This repository contains the assignments💻 of Database Management Systems prov
     e. Write the PL/SQL block for following requirements using parameterized Cursor: 
        Consider table EMP(e_no, d_no, Salary), department wise average salary should be inserted into the new table 
        dept_salary(d_no, Avg_salary).
+
+    f. Write PL/SQL block using explicit cursor: Cursor FOR Loop for following requirements: College has decided to mark all 
+       those students detained (D) who are having attendance less than 75%. Whenever such an update takes place, a record for 
+       the same is maintained in the D_Stud table.
