@@ -72,3 +72,8 @@ This repository contains the assignments💻 of Database Management Systems prov
        - If marks scored are between 989 and900 categories is first-class
        - If marks 899 and 825 categories are Higher Second Class.
 
+6.**Assignment-6**
+
+a. The bank manager has decided to activate all those accounts which were previously marked as inactive for 
+    performing no transaction in the last 365 days. Write a PL/SQL block (using the implicit cursor) to update 
+    the status of the account, display an approximate message based on the no. of rows affected by the update.Use of %FOUND, %NOTFOUND, %ROWCOUNT.
