@@ -1,1 +1,182 @@
+--1
+-- Creating table Customer
+create table customer(acc_no int , name varchar(10) ,last_trans int , status_before varchar (10));
 
+-- Insertion in table customer
+insert into customer values(101,'abc',250,'Active');
+insert into customer values(102,'rst',390,'Inactive');
+insert into customer values(103,'xyz',300,'Active');
+insert into customer values(104,'pqr',378,'Inactive');
+insert into customer values(105,'mno',400,'Inactive');
+
+alter table customer add(status_after varchar(10));
+select * from customer ;
+
+DECLARE  
+total_rows number(6); 
+Begin
+update customer set status_after='Active' where status_before='Inactive' and last_trans>365  ;
+IF sql%found THEN 
+      total_rows := sql%rowcount;
+      dbms_output.put_line( total_rows || ' Accounts activated successfully !!'); 
+ ELSIF sql%notfound THEN 
+      dbms_output.put_line('Updation Not required !!');
+END IF; 
+END;
+
+--2
+-- Creating table emp and increment_salary
+create table emp( e_no int, salary int);
+create table increment_salary(E_no int , Salary int );
+
+-- Insertion in emp and increment_salary
+insert into emp values(201,10000);
+insert into emp values(202,30000);
+insert into emp values(203,12000);
+insert into emp values(204,45000);
+insert into emp values(205,14000);
+insert into emp values(206,19000);
+
+alter table emp add(incr_salary int);
+
+declare
+avg_salary int;
+cursor  cur_avgsal is  select avg(salary) from emp;
+cursor sal_crsr is select e_no ,salary,incr_salary from emp where salary<avg_salary;
+memp_no emp.e_no%type;
+msalary emp.salary%type;
+mincr_sal emp.incr_salary%type;
+Begin
+open cur_avgsal;
+fetch cur_avgsal into avg_salary;
+dbms_output.put_line('Average salary = ' || avg_salary);
+open sal_crsr;
+if  sal_crsr%isopen then
+  loop
+  fetch sal_crsr into memp_no,msalary,mincr_sal;
+  exit when sal_crsr%notfound;
+if sal_crsr%found then
+  update emp set incr_salary= (msalary)+(msalary*10/100) where e_no= memp_no;
+insert into increment_salary values(memp_no,mincr_sal);
+end if;
+end loop;
+end if;
+close sal_crsr;
+close cur_avgsal;
+End;
+
+--3
+-- Creating table stud21 and d_stud
+create table stud21(roll number(4), att number(4), status varchar(1)); 
+create table d_stud(roll number(4), att number(4));
+
+-- Insertion in table stud21 and d_stud
+create table stud21(roll number(4), att number(4));
+insert into stud21 values(301,67);
+insert into stud21 values(302,78);
+insert into stud21 values(303,55);    
+insert into stud21 values(304,89);
+insert into stud21 values(305,70);
+
+alter table stud21 add(status varchar(10));
+select * from stud21;
+
+Declare
+Cursor crsr_att is select roll,att,status from stud21 where att<75;
+mroll stud21.roll%type;
+matt stud21.att%type;
+mstatus stud21.status%type;
+Begin
+open crsr_att;
+if crsr_att%isopen then
+loop
+fetch crsr_att into mroll,matt,mstatus;
+exit when crsr_att%notfound;
+if crsr_att%found then
+update stud21 set status='D' where roll=mroll;
+insert into D_stud values(mroll,matt);
+end if;
+end loop;
+end if;
+Close crsr_att;
+End;
+
+--4
+create table new_class(roll number(10), name varchar(10)); 
+create table old_class(roll number(10), name varchar(10));
+
+insert into new_class values(401 ,'Aditi');
+insert into new_class values(402 ,'Saumya');
+insert into old_class values(401 ,'Atmika');
+insert into old_class values(402 ,'Mohit');
+insert into old_class values(403 ,'Nitin');
+insert into old_class values(404 ,'Seema');
+
+select * from old_class; 
+select * from new _class;
+
+declare
+cursor cur_class is select * from old_class;
+cursor cur_check(str_name varchar) is select roll from new_class where name =str_name;
+str_roll new_class.roll%type;
+str_name new_class.name%type;
+load number(10);
+Begin
+open cur_class;
+loop
+fetch cur_class into str_roll,str_name;
+Exit when cur_class%notfound;
+open cur_check(str_name);
+fetch cur_check into load;
+if cur_check%found then
+dbms_output.put_line('stud' ||  ' ' || str_name ||  ' ' ||  'Name is already there .' );
+else
+dbms_output.put_line('stud' ||  ' ' || str_name ||  ' ' ||  'Name does not exist . Inserting in new_class table' );
+insert into new_class values(str_roll,str_name);
+end if;
+close cur_check;
+end loop;
+close cur_class;
+end;
+
+--5
+create table emp1(e_no int,d_no int,salary int);
+create table  dept_salary(d_no int , Avg_salary int);
+
+insert into emp1 values(501,2,21000);
+insert into emp1 values(502,1,35000);
+insert into emp1 values(503,1,45000);
+insert into emp1 values(504,2,25000);
+insert into emp1 values(505,3,50000);
+insert into emp1 values(506,3,41000);
+insert into emp1 values(507,3,37000);
+insert into emp1 values(508,2,17000);
+insert into emp1 values(509,4,29000);
+insert into emp1 values(510,4,11000);
+
+Declare
+cursor crsr_salary is select * from emp1;
+cursor crsr_avg(vdno number) is select d_no, avg(salary) from emp1 group by(d_no) having d_no=vdno ;
+veno number(10);
+vdno number(10);
+vsal number(10);
+mdno number(10);
+mavsal number(10);
+Begin
+Open crsr_salary;
+Loop
+fetch crsr_salary into veno, vdno, vsal;
+Exit When crsr_salary%NOTFOUND;
+Open crsr_avg(vdno);
+loop
+Fetch crsr_avg into mdno,mavsal;
+Exit When crsr_avg%NOTFOUND;
+if crsr_avg%FOUND Then
+dbms_output.put_line('Record Found . ');
+End if;
+End loop;
+insert into dept_salary values(mdno,mavsal);
+Close crsr_avg;
+End loop;
+Close crsr_salary;
+End;
