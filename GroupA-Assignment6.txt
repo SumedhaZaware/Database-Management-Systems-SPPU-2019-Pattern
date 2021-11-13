@@ -180,3 +180,30 @@ Close crsr_avg;
 End loop;
 Close crsr_salary;
 End;
+
+--6
+create table stud22(roll number(4), att number(4), status varchar(1)); 
+create table d_stud11(roll number(4), att number(4));
+create table stud22(roll number(4), att number(4));
+create table d_stud11(roll number(4), att number(4));
+
+insert into stud22 values(601,67);
+insert into stud22 values(602,75);
+insert into stud22 values(603,54);
+insert into stud22 values(604,93);
+insert into stud22 values(605,45);
+
+alter table stud22 add(status varchar(10));
+select *from stud22;
+
+Declare
+Cursor cur_stud is select roll, att, status from
+Stud22 where att<75;
+Begin 
+For attendance IN cur_stud
+Loop
+Update stud22 set status=’D’ where
+Roll=attendance.roll;
+Insert into d_stud11 values(attendance.roll, attendance.att);
+End loop;
+END;
