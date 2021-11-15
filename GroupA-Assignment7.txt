@@ -1,1 +1,31 @@
+-- 1
+create table clientmstr(id  number, name  varchar(10), dept_no number );
+create table audit_trade(operation varchar(10));
 
+insert into clientmstr values(1011,'Aashi',1);
+insert into clientmstr values(1012,'Nitin',15);
+insert into clientmstr values(1013,'Nishi',8);
+insert into clientmstr values(1014,'Aditi',7);
+insert into clientmstr values(1015,'Roshni',1);
+
+select * from clientmstr;
+
+Create or replace trigger c1 after update or delete on clientmstr
+Declare
+op varchar(10);
+Begin
+if updating then
+op:='update';
+end if;
+if deleting then
+op:='Delete';
+end if;
+insert into audit_trade values(op);
+End;
+/
+
+Update clientmstr set dep_no=5;
+Select * from clientmstr;
+
+delete from clientmstr where id=1013;
+select *from clientmstr;
