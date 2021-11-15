@@ -100,3 +100,13 @@ This repository contains the assignments💻 of Database Management Systems prov
     f. Write PL/SQL block using explicit cursor: Cursor FOR Loop for following requirements: College has decided to mark all 
        those students detained (D) who are having attendance less than 75%. Whenever such an update takes place, a record for 
        the same is maintained in the D_Stud table.
+
+7. **Assignment-7**
+
+    a. Write an update, delete the trigger on clientmstr table. The System should keep track of the records that ARE BEING updated 
+    or deleted. The old value of updated or deleted records should be added to the audit_trade table. (separate implementation using 
+    both row and statement triggers)
+    b. Write a before trigger for Insert, update event considering following requirement: **Emp(e_no, e_name, salary)**
+        - Trigger action should be initiated when salary is tried to be inserted is less than Rs. 50,000/-
+        - Trigger action should be initiated when salary is tried to be updated for a value less than Rs. 50,000/- Action 
+          should be a rejection of update or Insert operation by displaying an appropriate error message
