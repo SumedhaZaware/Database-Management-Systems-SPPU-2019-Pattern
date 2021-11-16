@@ -109,6 +109,9 @@ This repository contains the assignments💻 of Database Management Systems prov
     b. Write a before trigger for Insert, update event considering following requirement: **Emp(e_no, e_name, salary)**
     
         - Trigger action should be initiated when salary is tried to be inserted is less than Rs. 50,000/-
-
         - Trigger action should be initiated when salary is tried to be updated for a value less than Rs. 50,000/- Action 
           should be a rejection of update or Insert operation by displaying an appropriate error message
+
+## Group-B 
+1.**Assignment-1**
+    Design and Develop MongoDB Queries using CRUD operations.(Use CRUD operations, SAVE method, logical operators etc).
