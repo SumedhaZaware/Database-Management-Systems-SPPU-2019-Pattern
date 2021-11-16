@@ -113,6 +113,6 @@ This repository contains the assignments💻 of Database Management Systems prov
           should be a rejection of update or Insert operation by displaying an appropriate error message
 
 ## Group-B 
-1.**Assignment-1**
+1. **Assignment-1**
 
     Design and Develop MongoDB Queries using CRUD operations.(Use CRUD operations, SAVE method, logical operators etc).
