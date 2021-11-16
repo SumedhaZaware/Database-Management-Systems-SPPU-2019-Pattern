@@ -107,6 +107,9 @@ This repository contains the assignments💻 of Database Management Systems prov
     or deleted. The old value of updated or deleted records should be added to the audit_trade table. (separate implementation using 
     both row and statement triggers)
     b. Write a before trigger for Insert, update event considering following requirement: **Emp(e_no, e_name, salary)**
+    
         - Trigger action should be initiated when salary is tried to be inserted is less than Rs. 50,000/-
+
+
         - Trigger action should be initiated when salary is tried to be updated for a value less than Rs. 50,000/- Action 
           should be a rejection of update or Insert operation by displaying an appropriate error message
