@@ -116,3 +116,8 @@ This repository contains the assignments💻 of Database Management Systems prov
 1. **Assignment-1**
 
     Design and Develop MongoDB Queries using CRUD operations.(Use CRUD operations, SAVE method, logical operators etc).
+
+
+2. **Assignment-2**
+
+    Design and Develop MongoDB Queries using aggregation and indexing with suitable example using MongoDB.
