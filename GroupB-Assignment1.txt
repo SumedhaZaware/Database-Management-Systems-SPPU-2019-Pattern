@@ -1,1 +1,117 @@
+1. Create Database
+> use PCCOE
+switched to db PCCOE
 
+2. Create Collections teachers and students and insert documents in that collections
+> db.createCollection("teachers")
+{ "ok" : 1 }
+> db.createCollection("student")
+{ "ok" : 1 }
+
+> db.student.insert({"st_id":1023670,"st_roll":1,"st_dept":"Comp","year":"FE","div":"A"}) 
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({"st_id":2023451,"st_roll":2,"st_dept":"Comp","year":"SE","div":"B"}) 
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({"st_id":3059672,"st_roll":3,"st_dept":"Comp","year":"TE","div":"C"}) 
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({"st_id":1043675,"st_roll":5,"st_dept":"IT","year":"SE","div":"A"}) 
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({"st_id":1032674,"st_roll":4,"st_dept":"IT","year":"FE","div":"B"}) 
+WriteResult({ "nInserted" : 1 })
+
+3. Find the information about all students
+> db.student.find().pretty()
+{
+	"_id" : ObjectId("616291b578a48b543903cb88"),
+	"st_id" : 1023670,
+	"st_roll" : 1,
+	"st_dept" : "Comp",
+	"year" : "FE",
+	"div" : "A"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb89"),
+	"st_id" : 2023451,
+	"st_roll" : 2,
+	"st_dept" : "Comp",
+	"year" : "SE",
+	"div" : "B"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb8a"),
+	"st_id" : 3059672,
+	"st_roll" : 3,
+	"st_dept" : "Comp",
+	"year" : "TE",
+	"div" : "C"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb8b"),
+	"st_id" : 1043675,
+	"st_roll" : 5,
+	"st_dept" : "IT",
+	"year" : "SE",
+	"div" : "A"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb8c"),
+	"st_id" : 1032674,
+	"st_roll" : 4,
+	"st_dept" : "IT",
+	"year" : "FE",
+	"div" : "B"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb8d"),
+	"st_id" : 3043676,
+	"st_roll" : 6,
+	"st_dept" : "IT",
+	"year" : "TE",
+	"div" : "B"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb99e"),
+	"st_id" : 1023670,
+	"st_roll" : 1,
+	"st_dept" : "Comp",
+	"year" : "FE",
+	"div" : "A"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb99f"),
+	"st_id" : 2023451,
+	"st_roll" : 2,
+	"st_dept" : "Comp",
+	"year" : "SE",
+	"div" : "B"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb9a0"),
+	"st_id" : 3059672,
+	"st_roll" : 3,
+	"st_dept" : "Comp",
+	"year" : "TE",
+	"div" : "C"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb9a1"),
+	"st_id" : 1043675,
+	"st_roll" : 5,
+	"st_dept" : "IT",
+	"year" : "SE",
+	"div" : "A"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb9a2"),
+	"st_id" : 1032674,
+	"st_roll" : 4,
+	"st_dept" : "IT",
+	"year" : "FE",
+	"div" : "B"
+}
+
+4. Find the information about all teachers of the computer department 
+> db.teacher.find({"dname":"computer"}).pretty()
+
+5. Find the information about all teachers of Computer, IT, and ENTC department
+db.teacher.find({$or:[{"dname":"computer"},{"dname":"IT"},{"dname":"ENTC"}]}).pretty()
