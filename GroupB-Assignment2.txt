@@ -1,1 +1,227 @@
+COLLECTION NAME: Zipcode
+db.createCollection("Zipcode")
 
+db.Zipcode.insert({"_id" : “10280" ,"city" :"New York" ,"state" : "NY" , "pop" :”5574000”} ) 
+db.Zipcode.insert({"_id" : 10457 ,"city" :"Mumbai" ,"state":"Maharashtra","pop" :12400000}) 
+db.Zipcode.insert({"_id" : 90503 ,"city" :" Los Angeles" ,"state":" California","pop" : 33871648}) 
+db.Zipcode.insert({"_id" : 05201 ,"city" :" London" ,"state":" England","pop" : 9002488}) 
+db.Zipcode.insert({"_id" : 35001 ,"city" :" Jaisalmer" ,"state":" Rajasthan", "pop" : 318284}) 
+db.Zipcode.insert({"_id" :04054 ,"city" :" Wells" ,"state":" England","pop" :12000}) 
+db.Zipcode.find().pretty()
+
+{ "_id" : 10280, "city" : "New York", "state" : "NY", "pop" : 5574000 }
+{
+	"_id" : 10457,
+	"city" : "Mumbai",
+	"state" : "Maharashtra",
+	"pop" : 12400000
+}
+{
+	"_id" : 90503,
+	"city" : " Los Angeles",
+	"state" : "California",
+	"pop" : 33871648
+}
+{ "_id" : 2689, "city" : " London", "state" : "England", "pop" : 9002488 }
+{
+	"_id" : 35001,
+	"city" : " Jaisalmer",
+	"state" : " Rajasthan",
+	"pop" : 318284
+}
+{ "_id" : 2092, "city" : " Wells", "state" : " England", "pop" : 12000 }
+
+COLLECTION NAME: emp
+db.createCollection("emp")
+
+Values: db.emp.insert({"emp_id":10245,"emp_name":"Anahita","dept_no":1005,"salary":120000}) 
+db.emp.insert({"emp_id":10984,"emp_name":"Aditi","dept_no":1007,"salary":80000}) 
+db.emp.insert({"emp_id":10354,"emp_name":"Seema","dept_no":1005,"salary":65000}) 
+db.emp.insert({"emp_id":12608,"emp_name":"Saumya","dept_no":1009,"salary":45000}) 
+db.emp.insert({"emp_id":17089,"emp_name":"Nitin","dept_no":1007,"salary":97000}) 
+db.emp.insert({"emp_id":10678,"emp_name":"Deepa","dept_no":1005,"salary":85000}) 
+db.emp.insert({"emp_id":17042,"emp_name":"Manish","dept_no":1007,"salary":80000}) 
+db.emp.insert({"emp_id":13602,"emp_name":"Shilpa","dept_no":1003,"salary":15000}) 
+db.emp.insert({"emp_id":19047,"emp_name":"Mohit","dept_no":1009,"salary":75000}) 
+db.emp.insert({"emp_id":10226,"emp_name":"Sakshi","dept_no":1003,"salary": 12000}) 
+db.emp.insert({"emp_id":13022,"emp_name":"Ragini","dept_no":1003,"salary":18000}) 
+db.emp.insert({"emp_id":145681,"emp_name":"Ramesh","dept_no":1005,"salary":10000}) 
+
+> db.emp.find().pretty()
+{
+	"_id" : ObjectId("61628be378a48b543903cb7d"),
+	"emp_id" : 10245,
+	"emp_name" : "Anahita",
+	"dept_no" : 1005,
+	"salary" : 120000
+}
+{
+	"_id" : ObjectId("61628bee78a48b543903cb7e"),
+	"emp_id" : 10984,
+	"emp_name" : "Aditi",
+	"dept_no" : 1007,
+	"salary" : 80000
+}
+{
+	"_id" : ObjectId("61628bef78a48b543903cb7f"),
+	"emp_id" : 10354,
+	"emp_name" : "Seema",
+	"dept_no" : 1005,
+	"salary" : 65000
+}
+{
+	"_id" : ObjectId("61628bfc78a48b543903cb80"),
+	"emp_id" : 12608,
+	"emp_name" : "Saumya",
+	"dept_no" : 1009,
+	"salary" : 45000
+}
+{
+	"_id" : ObjectId("61628bfc78a48b543903cb81"),
+	"emp_id" : 17089,
+	"emp_name" : "Nitin",
+	"dept_no" : 1007,
+	"salary" : 97000
+}
+{
+	"_id" : ObjectId("61628bfc78a48b543903cb82"),
+	"emp_id" : 10678,
+	"emp_name" : "Deepa",
+	"dept_no" : 1005,
+	"salary" : 85000
+}
+{
+	"_id" : ObjectId("61628bfc78a48b543903cb83"),
+	"emp_id" : 17042,
+	"emp_name" : "Manish",
+	"dept_no" : 1007,
+	"salary" : 80000
+}
+{
+	"_id" : ObjectId("61628bfc78a48b543903cb84"),
+	"emp_id" : 13602,
+	"emp_name" : "Shilpa",
+	"dept_no" : 1003,
+	"salary" : 15000
+}
+{
+	"_id" : ObjectId("61628bfc78a48b543903cb85"),
+	"emp_id" : 19047,
+	"emp_name" : "Mohit",
+	"dept_no" : 1009,
+	"salary" : 75000
+}
+{
+	"_id" : ObjectId("61628bfc78a48b543903cb86"),
+	"emp_id" : 10226,
+	"emp_name" : "Sakshi",
+	"dept_no" : 1003,
+	"salary" : 12000
+}
+{
+	"_id" : ObjectId("61628bfe78a48b543903cb87"),
+	"emp_id" : 13022,
+	"emp_name" : "Ragini",
+	"dept_no" : 1003,
+	"salary" : 18000
+}
+
+COLLECTION NAME: student
+db.createCollection("student")
+
+db.student.insert({"st_id":1023670,"st_roll":1,"st_dept":"Comp","year":"FE","div":"A"}) 
+db.student.insert({"st_id":2023451,"st_roll":2,"st_dept":"Comp","year":"SE","div":"B"}) 
+db.student.insert({"st_id":3059672,"st_roll":3,"st_dept":"Comp","year":"TE","div":"C"}) 
+db.student.insert({"st_id":1043675,"st_roll":5,"st_dept":"IT","year":"SE","div":"A"}) 
+db.student.insert({"st_id":1032674,"st_roll":4,"st_dept":"IT","year":"FE","div":"B"}) 
+db.student.insert({"st_id":3043676,"st_roll":6,"st_dept":"IT","year":"TE","div":"B"}) 
+
+> db.student.find().pretty()
+{
+	"_id" : ObjectId("616291b578a48b543903cb88"),
+	"st_id" : 1023670,
+	"st_roll" : 1,
+	"st_dept" : "Comp",
+	"year" : "FE",
+	"div" : "A"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb89"),
+	"st_id" : 2023451,
+	"st_roll" : 2,
+	"st_dept" : "Comp",
+	"year" : "SE",
+	"div" : "B"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb8a"),
+	"st_id" : 3059672,
+	"st_roll" : 3,
+	"st_dept" : "Comp",
+	"year" : "TE",
+	"div" : "C"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb8b"),
+	"st_id" : 1043675,
+	"st_roll" : 5,
+	"st_dept" : "IT",
+	"year" : "SE",
+	"div" : "A"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb8c"),
+	"st_id" : 1032674,
+	"st_roll" : 4,
+	"st_dept" : "IT",
+	"year" : "FE",
+	"div" : "B"
+}
+{
+	"_id" : ObjectId("616291b578a48b543903cb8d"),
+	"st_id" : 3043676,
+	"st_roll" : 6,
+	"st_dept" : "IT",
+	"year" : "TE",
+	"div" : "B"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb99e"),
+	"st_id" : 1023670,
+	"st_roll" : 1,
+	"st_dept" : "Comp",
+	"year" : "FE",
+	"div" : "A"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb99f"),
+	"st_id" : 2023451,
+	"st_roll" : 2,
+	"st_dept" : "Comp",
+	"year" : "SE",
+	"div" : "B"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb9a0"),
+	"st_id" : 3059672,
+	"st_roll" : 3,
+	"st_dept" : "Comp",
+	"year" : "TE",
+	"div" : "C"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb9a1"),
+	"st_id" : 1043675,
+	"st_roll" : 5,
+	"st_dept" : "IT",
+	"year" : "SE",
+	"div" : "A"
+}
+{
+	"_id" : ObjectId("61a30992c5e79250168fb9a2"),
+	"st_id" : 1032674,
+	"st_roll" : 4,
+	"st_dept" : "IT",
+	"year" : "FE",
+	"div" : "B"
+}
