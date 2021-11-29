@@ -225,3 +225,46 @@ db.student.insert({"st_id":3043676,"st_roll":6,"st_dept":"IT","year":"TE","div":
 	"year" : "FE",
 	"div" : "B"
 }
+
+1.
+db.Zipcode.find({pop: {$gt: 10000000}}).pretty()
+
+2.
+db.emp.aggregate([
+	{$group:{"_id":"$dept_no",Avg_salary:{$avg:"$salary"}}}
+]) 
+
+3.
+db.emp.aggregate([
+	{$group:{"_id":"$dept_no",NO_of_emp:{$sum:1}}}
+])
+
+4.
+db.emp.aggregate([ 
+	{$group:{"_id":"$dept_no",total:{$sum:"$salary"}}} 
+]) 
+db.emp.aggregate([ 
+	{$group:{"_id":"$dept_no",total:{$sum:"$salary"}}}, 
+	{$match: {total:{$gte : 50000}}} 
+])
+
+5.
+db.emp.aggregate([ 
+	{$group:{"_id":"$dept_no",Min_sal:{$min:"$salary"}}} 
+]) 
+db.emp.aggregate([ 
+	{$group:{"_id":"$dept_no",Max_sal:{$max:"$salary"}}} 
+])
+db.emp.aggregate([ 
+	{$group:{"_id":"$dept_no",total:{$sum:"$salary"}}}, 
+	{$match: {total:{$lt : 50000}}} 
+])
+
+6.
+db.student.createIndex({"st_roll":1})
+
+7.
+db.emp.createIndex({"emp_id":1},{unique:true})
+
+8.
+db.student.createIndex({ "st_id": 1, "year": 1 })
