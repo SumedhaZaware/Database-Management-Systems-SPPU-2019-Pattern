@@ -128,4 +128,4 @@ This repository contains the assignments💻 of Database Management Systems prov
 
 4. **Assignment-4**
 
-    Write a program to implement Mongo DB database connectivity with any front end language to implement Database navigation operations(add, delete, edit etc.)
+    Write a program to implement Mongo DB database connectivity with any front end language to implement Database navigation operations.
