@@ -121,3 +121,7 @@ This repository contains the assignments💻 of Database Management Systems prov
 2. **Assignment-2**
 
     Design and Develop MongoDB Queries using aggregation and indexing with suitable example using MongoDB.
+
+3. **Assignment-3**
+
+    Implement Map reduces operation with suitable example using MongoDB
