@@ -125,3 +125,7 @@ This repository contains the assignments💻 of Database Management Systems prov
 3. **Assignment-3**
 
     Implement Map reduces operation with suitable example using MongoDB
+
+4. **Assignment-4**
+
+    Write a program to implement Mongo DB database connectivity with any front end language to implement Database navigation operations(add, delete, edit etc.)
