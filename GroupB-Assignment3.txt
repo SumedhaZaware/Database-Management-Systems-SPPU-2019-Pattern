@@ -1,1 +1,26 @@
+COLLECTION: emp11
+db.createCollection("emp11")
 
+db.emp11.insert({"emp_id":10984,"emp_name":"Aditi","dept_name":"Marketing","salary":80000});
+db.emp11.insert({"emp_id":10984,"emp_name":"Aditi","dept_name":"Marketing","salary":80000});
+db.emp11.insert({"emp_id":10354,"emp_name":"Seema","dept_name":"Computer","salary":65000}); 
+db.emp11.insert({"emp_id":12608,"emp_name":"Saumya","dept_name":"R&D","salary":45000});
+db.emp11.insert({"emp_id":17089,"emp_name":"Nitin","dept_name":"Marketing","salary":97000});
+db.emp11.insert({"emp_id":10678,"emp_name":"Deepa","dept_name":"Computer","salary":85000});
+db.emp11.insert({"emp_id":17042,"emp_name":"Manish","dept_name":"Marketing","salary":80000});
+db.emp11.insert({"emp_id":13602,"emp_name":"Shilpa","dept_name":"R&D","salary":15000});
+db.emp11.insert({"emp_id":19047,"emp_name":"Mohit","dept_name":"Computer","salary":75000});
+db.emp11.insert({"emp_id":13022,"emp_name":"Ragini","dept_name":"R&D","salary":18000});
+
+db.emp11.find().pretty();
+
+COLLECTION: Orders
+db.createCollection("Orders"); 
+
+db.Orders.insert({"cust_id":"abc123","s":"A","price":25});
+db.Orders.insert({"cust_id":"mnp456","s":"A","price":50});
+db.Orders.insert({"cust_id":"abc123","s":"A","price":75});
+db.Orders.insert({"cust_id":"mnp456","s":"A","price":15});
+db.Orders.insert({"cust_id":"abc123","s":"A","price":30});
+
+db.Orders.find().pretty();
