@@ -24,3 +24,17 @@ db.Orders.insert({"cust_id":"mnp456","s":"A","price":15});
 db.Orders.insert({"cust_id":"abc123","s":"A","price":30});
 
 db.Orders.find().pretty();
+
+COLLECTION: zipcode1
+db.createCollection(“zipcode1”);
+
+db.zipcode1.insert({"_id" : 10280 ,"city" :" New York " ,"state" : " NY" , "pop" :557400} );
+db.zipcode1.insert({"_id" : 90503 ,"city" :" Los Angeles" ,"state":" California","pop" :33871648});
+db.zipcode1.insert({"_id" : 15902 ,"city" :" White Plains " ,"state":" NY","pop" :583170});
+db.zipcode1.insert({"_id" : 35001 ,"city" :" Jaisalmer" ,"state":" Rajasthan", "pop" :318284});
+db.zipcode1.insert({"_id" :04054 ,"city" :" Wells" ,"state":" England","pop":12000});
+db.zipcode1.insert({"_id" : 10456,"city" :"Mumbai"
+,"state":"Maharashtra","pop" :12400000});
+
+db.zipcode1.find().pretty();
+
