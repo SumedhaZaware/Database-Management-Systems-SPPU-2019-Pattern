@@ -38,3 +38,25 @@ db.zipcode1.insert({"_id" : 10456,"city" :"Mumbai"
 
 db.zipcode1.find().pretty();
 
+1.
+> var mapf =function(){emit(this.dept_name,this.salary);};
+> var redf =function(key,val){return Array.sum(val);};
+> db.emp11.mapReduce(mapf,redf,{out : "Salary_DeptWise"});
+{ "result" : "Salary_DeptWise", "ok" : 1 }
+
+db. Salary_DeptWise.find();
+
+2.
+>var mapfunct= function(){
+... emit(this.dept_name,{count:1}); };
+> var redfunct = function(dept_name,val){
+... var value={count:0};
+... for(i=0;i<val.length;i++){
+... value.count +=val[i].count; }
+... return value; };
+
+> db.emp11.mapReduce(mapfunct, redfunct,{out: "EmpPerDept"});
+{ "result" : "EmpPerDept", "ok" : 1 }
+> db.EmpPerDept.find();
+
+3.
