@@ -60,3 +60,27 @@ db. Salary_DeptWise.find();
 > db.EmpPerDept.find();
 
 3.
+{
+_id: ObjectId("50a8240b927d5d8b5891743c"),
+cust_id: "abc123",
+status: 'A',
+price: 25,
+}
+
+> var mapfun =function(){
+... emit(this.cust_id,this.price); };
+> var redufun =function(key,value){
+... return Array.sum(value); };
+> db.Orders.mapReduce(mapfun,redufun,{out:"Price_per_cust"});
+{ "result" : "Price_per_cust", "ok" : 1 }
+
+> db.Price_per_cust.find();
+
+4.
+> var mapf =function(){emit(this.dept_name,this.salary);};
+> var redf =function(key,val){return Array.sum(val);};
+> db.emp11.mapReduce(mapf,redf,{query:{dept_name:"Computer"},out : 
+"Salary_inCompDept"});
+{ "result" : "Salary_inCompDept", "ok" : 1 }
+
+> db.Salary_inCompDept.find();
