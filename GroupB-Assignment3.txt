@@ -60,13 +60,6 @@ db. Salary_DeptWise.find();
 > db.EmpPerDept.find();
 
 3.
-{
-_id: ObjectId("50a8240b927d5d8b5891743c"),
-cust_id: "abc123",
-status: 'A',
-price: 25,
-}
-
 > var mapfun =function(){
 ... emit(this.cust_id,this.price); };
 > var redufun =function(key,value){
@@ -84,3 +77,14 @@ price: 25,
 { "result" : "Salary_inCompDept", "ok" : 1 }
 
 > db.Salary_inCompDept.find();
+
+5.
+> var mapfunc= function(){
+if(this.state == " NY")
+... emit(this.city,this.pop);};
+> var reducefunc=function(city,pop){
+... return pop;};
+> db.zipcode1.mapReduce(mapfunc,reducefunc,{"out":"Popoulation_per_city"});
+{ "result" : "Popoulation_per_city", "ok" : 1 }
+
+> db.Popoulation_per_city.find();
