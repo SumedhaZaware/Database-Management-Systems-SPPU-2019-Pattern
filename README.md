@@ -112,6 +112,10 @@ This repository contains the assignments💻 of Database Management Systems prov
         - Trigger action should be initiated when salary is tried to be updated for a value less than Rs. 50,000/- Action 
           should be a rejection of update or Insert operation by displaying an appropriate error message
 
+8. **Assignment-8**
+
+    Write a program to implement MySQL/Oracle database connectivity with any front end language to implement Database navigation operations.
+
 ## Group-B 
 1. **Assignment-1**
 
